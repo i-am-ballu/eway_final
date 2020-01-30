@@ -13,53 +13,53 @@
     </div>
 </section>
 <!-- end -->
-<form [formGroup]="EwayForm" (validSubmit)="submit()">
+<form [formGroup]="EwayForm"(validSubmit)="submit()">
 
 <section class="part2">
     <ul class="form-inline partision"><span class="type">Supply Type</span>
 
         <li>
-            <input class="rdo" type="radio" formControlName="supplyType"  name="supplyType" [(ngModel)]="userModel.supplyType" value="male"> Outward
-            <li>
+            <input class="rdo" type="radio" formControlName="supplyType"  name="supplyType" [(ngModel)]="ewayform.supplyType" value="O"> Outward
+        </li>
                 <li>
-                    <input type="radio" formControlName="supplyType"  name="supplyType" [(ngModel)]="userModel.supplyType" value="female">Inward
+                    <input type="radio" formControlName="supplyType"  name="supplyType" [(ngModel)]="ewayform.supplyType" value="I">Inward
                     <br>
                 </li><span class="sub">Sub Type</span>
                 <li>
-                    <input type="radio" name="gender" value="other"> Supply
+                    <input type="radio"  formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="1"> Supply
                     <br> </li>
                 <li>
-                    <input type="radio" name="gender" value="male">Export
+                    <input type="radio" formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="2">Export
                     <br>
                 </li>
                 <li>
-                    <input type="radio" name="gender" value="female"> Job Work
+                    <input type="radio" formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="3"> Job Work
                     <br>
                 </li>
                 <li>
-                    <input type="radio" name="gender" value="other"> SKD/CKD/Lots
+                    <input type="radio" formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="4"> SKD/CKD/Lots
                     <br> </li>
                 <li>
-                    <input type="radio" name="gender" value="male"> Recipient Not Known
+                    <input type="radio" formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="5"> Recipient Not Known
                     <br>
                 </li>
                 <li>
-                    <input type="radio" name="gender" value="female"> For Own Use
+                    <input type="radio" formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="6"> For Own Use
                     <br>
                 </li>
                 <li>
-                    <input type="radio" name="gender" value="female"> For Own Use
+                    <input type="radio" formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="7"> For Own Use
                     <br>
                 </li>
                 <li>
-                    <input type="radio" name="gender" value="other"> Exhibition or Fairs
+                    <input type="radio" formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="8"> Exhibition or Fairs
                     <br> </li>
                 <li>
-                    <input type="radio" name="gender" value="female"> Line Sales
+                    <input type="radio" formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="9"> Line Sales
                     <br>
                 </li>
                 <li>
-                    <input type="radio" name="gender" value="other"> Others
+                    <input type="radio" formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="10"> Others
                     <br> </li>
     </ul>
 </section>
@@ -67,19 +67,19 @@
 <section class="part3 form-inline">
     <ul class="one">
         <li class="first">Document Type
-            <select type="select" class="form-control" formControlName="docType">
-                <option value="INV">Document Type</option>
+            <select type="select" class="form-control" [(ngModel)]="ewayform.docType" formControlName="docType" >
+                <option value="s">Document Type</option>
                 <option value="INV">Saab</option>
-                <option value="INV">Fiat</option>
-                <option value="INV">Audi</option>
+                <option value="p">Fiat</option>
+                <option value="U">Audi</option>
             </select>
         </li>
         <li class="second">Document No:
-            <input type="text" name=" ">
+            <input type="text" [(ngModel)]="ewayform.docNo" formControlName="docNo">
         </li>
 
         <li class="third">Document Date:
-            <input type="text" name=" ">
+            <input type="date" [(ngModel)]="ewayform.docDate" formControlName="docDate">
         </li>
 
         <li class="fourth">Transaction Type:
@@ -105,33 +105,36 @@
     <div class="row">
         <div class="col-md-6">
             <p class="name">Name :
-                <input type="text" name=" " value="HOLISOL LOGISTICS PRIVATELIMITED">
+                <input type="text" [(ngModel)]="ewayform.fromTrdName" formControlName="fromTrdName">
             </p>
             <p class="noumber">GSTIN :
-                <input type="text" name=" " value="29AACCH2364P1Z3">
+                <input type="text"[(ngModel)]="ewayform.fromGstin" formControlName="fromGstin">
             </p>
             <p class="form-inline">State :
-                <select type="select" class="form-control" formControlName="docType">
+                <!-- <select type="select" [(ngModel)]="ewayform.fromTrdName" formControlName="fromTrdName">
                     <option value="INV">KARNATAKA</option>
                     <option value="INV">Saab</option>
                     <option value="INV">Fiat</option>
                     <option value="INV">Audi</option>
+                </select> -->
+                <select type="select"  class="form-control" formControlName="fromStateCode"  [(ngModel)]="ewayform.fromStateCode">
+                    <option *ngFor="let state of stateData; let i=index" value={{state.state_code}}>{{state.state_name}}</option>
                 </select>
             </p>
         </div>
         <div class="col-md-6">
             <p class="name">Address :
-                <input type="text" name=" " value="Plot No 48 Road No 3 Jigani Ho">
+                <input type="text"[(ngModel)]="ewayform.fromAddr1" formControlName="fromAddr1">
             </p>
             <p class="ad">
-                <input type="text" name=" " value="Industrial area 2nd  PhaseAnekal taluk">
+                <input type="text" [(ngModel)]="ewayform.fromAddr2" formControlName="fromAddr2">
             </p>
             <p class="name">Place :
-                <input class="input" type="text" name=" " value="Bengaluru (Bangalore) Rural">
+                <input class="input" type="text" [(ngModel)]="ewayform.fromPlace" formControlName="fromPlace">
             </p>
             <ul class="box">
                 <li>Pincode:
-                    <input type="text" name=" " value="560106"> </li>
+                    <input type="text" [(ngModel)]="ewayform.fromPincode" formControlName="fromPincode"> </li>
             </ul>
         </div>
     </div>
@@ -149,33 +152,30 @@
     <div class="row">
         <div class="col-md-6">
             <p class="name">Name :
-                <input type="text" name=" " value="HOLISOL LOGISTICS PRIVATELIMITED">
+                <input type="text" [(ngModel)]="ewayform.toTrdName" formControlName="toTrdName">
             </p>
             <p class="noumber">GSTIN :
-                <input type="text" name=" " value="29AACCH2364P1Z3">
+                <input type="text" [(ngModel)]="ewayform.toGstin" formControlName="toGstin">
             </p>
             <p class="form-inline">State :
-                <select type="select" class="form-control" formControlName="docType">
-                    <option value="INV">KARNATAKA</option>
-                    <option value="INV">Saab</option>
-                    <option value="INV">Fiat</option>
-                    <option value="INV">Audi</option>
+                <select type="select"  class="form-control" formControlName="fromStateCode"  [(ngModel)]="ewayform.fromStateCode">
+                    <option *ngFor="let state of stateData; let i=index" value={{state.state_code}}>{{state.state_name}}</option>
                 </select>
             </p>
         </div>
         <div class="col-md-6">
             <p class="name">Address :
-                <input type="text" name=" " value="Plot No 48 Road No 3 Jigani Ho">
+                <input type="text" [(ngModel)]="ewayform.toAddr1" formControlName="toAddr1">
             </p>
             <p class="ad">
-                <input type="text" name=" " value="Industrial area 2nd  PhaseAnekal taluk">
+                <input type="text" [(ngModel)]="ewayform.toAddr2" formControlName="toAddr2">
             </p>
             <p class="name">Place :
-                <input class="input" type="text" name=" " value="Bengaluru (Bangalore) Rural">
+                <input class="input" type="text" [(ngModel)]="ewayform.toPlace" formControlName="toPlace">
             </p>
             <ul class="box">
                 <li>Pincode:
-                    <input type="text" name=" " value="560106"> </li>
+                    <input type="text"[(ngModel)]="ewayform.toPincode" formControlName="toPincode"> </li>
             </ul>
         </div>
     </div>
@@ -189,7 +189,7 @@
 <!-- end -->
 
 <section class="part6">
-    <form class="form-horizontal">
+    <div class="form-horizontal">
         <div class="table-responsive">
             <table class="table">
                 <thead class="thead" style="text-align:center">
@@ -232,9 +232,9 @@
                 </tbody>
             </table>
         </div>
-    </form>
+    </div>
     <!-- second form -->
-    <form class="form-horizontal">
+    <div class="form-horizontal">
         <div class="table-responsive">
             <table class="table">
                 <thead class="thead">
@@ -253,27 +253,27 @@
                 <tbody>
                     <tr>
                         <td>
-                            <input style="width:120px;" type='text' value='Name' /> </td>
+                            <input style="width:120px;" type='text' [(ngModel)]="ewayform.totalValue" formControlName="totalValue" /> </td>
                         <td>
-                            <input style="width:120px;" type='text' value='' /> </td>
+                            <input style="width:120px;" type='text' [(ngModel)]="ewayform.cgstValue" formControlName="cgstValue" /> </td>
                         <td>
-                            <input style="width:120px;" type='text' value='' /> </td>
+                            <input style="width:120px;" type='text' [(ngModel)]="ewayform.sgstValue" formControlName="sgstValue" /> </td>
                         <td>
-                            <input style="width:120px;" type='text' value='' /> </td>
+                            <input style="width:120px;" type='text'[(ngModel)]="ewayform.igstValue" formControlName="igstValue" /> </td>
                         <td>
-                            <input style="width:120px;" type='text' value='' /> </td>
+                            <input style="width:120px;" type='text' [(ngModel)]="ewayform.cessValue" formControlName="cessValue" /> </td>
                         <td>
-                            <input style="width:120px;" type='text' value='' /> </td>
+                            <input style="width:120px;" type='text'[(ngModel)]="ewayform.cessNonAdvolValue" formControlName="cessNonAdvolValue" /> </td>
                         <td>
-                            <input style="width:120px;" type='text' value='' /> </td>
+                            <input style="width:120px;" type='text' [(ngModel)]="ewayform.otherValue" formControlName="otherValue" /> </td>
                         <td>
-                            <input style="width:120px;" type='text' value='' /> </td>
+                            <input style="width:120px;" type='text' [(ngModel)]="ewayform.totInvValue" formControlName="totInvValue" /> </td>
 
                     </tr>
                 </tbody>
             </table>
         </div>
-    </form>
+    </div>
 
 </section>
 <!-- end -->
@@ -285,27 +285,27 @@
 </section>
 <!-- end -->
 <section class="last-second">
-    <form class="form-inline">
+    <div class="form-inline">
         <div class="form-group">
             <label for="inputPassword6">Transporter Name </label>
-            <input type="password" id="inputPassword6" class="form-control mx-sm-4" aria-describedby="passwordHelpInline">
+            <input type="text" id="inputPassword6" class="form-control mx-sm-4" aria-describedby="passwordHelpInline" [(ngModel)]="ewayform.transporterName" formControlName="transporterName">
             <small id="passwordHelpInline" class="text-muted">
           </small>
         </div>
         <div class="form-group two">
             <label for="inputPassword6">Transporter ID</label>
-            <input type="password" id="inputPassword6" class="form-control mx-sm-4" aria-describedby="passwordHelpInline">
+            <input type="text" id="inputPassword6" class="form-control mx-sm-4" aria-describedby="passwordHelpInline" [(ngModel)]="ewayform.transporterId" formControlName="transporterId">
             <small id="passwordHelpInline" class="text-muted">
             </small>
         </div>
 
         <div class="form-group two">
             <label for="inputPassword6">Approximate Distance (in KM)</label>
-            <input type="password" id="inputPassword6" class="form-control mx-sm-4" aria-describedby="passwordHelpInline">
+            <input type="text" id="inputPassword6" class="form-control mx-sm-4" aria-describedby="passwordHelpInline" [(ngModel)]="ewayform.transDistance" formControlName="transDistance" >
             <small id="passwordHelpInline" class="text-muted">
             </small>
         </div>
-    </form>
+    </div>
 </section>
 <!-- end -->
 <section class="part4">
@@ -317,51 +317,53 @@
          <div class="form-check-inline"> 
             <p class="noumber">Mode:</p>         
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="optradio">Road
+                    <input type="radio" class="form-check-input" name="transMode" [(ngModel)]="ewayform.transMode" formControlName="transMode" value="0">Road
                 </label>
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="optradio">Rail
+                    <input type="radio" class="form-check-input" name="transMode" [(ngModel)]="ewayform.transMode" formControlName="transMode" value="1">Rail
                 </label>
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="optradio" disabled>Air
+                    <input type="radio" class="form-check-input" name="transMode" [(ngModel)]="ewayform.transMode" formControlName="transMode" value="2">Air
                 </label>
                 <label class="form-check-label">
-                    <input type="radio" class="form-check-input" name="optradio" disabled>Ship
+                    <input type="radio" class="form-check-input" name="transMode" [(ngModel)]="ewayform.transMode" formControlName="transMode" value="3">Ship
                 </label>
         </div>
    <section class="exception"> 
         <div class="form-check-inline"> 
             <p class="noumber2">Vehicle Type:</p>         
             <label class="form-check">
-                <input type="radio" class="form-check-input" name="optradio">Regular
+                <input type="radio" class="form-check-input" name="vehicleType" [(ngModel)]="ewayform.vehicleType" formControlName="vehicleType" value="R">Regular
             </label> 
             <label class="form-check">
-                <input type="radio" class="form-check-input text" name="optradio">Over Dimensional Cargo
+                <input type="radio" class="form-check-input text" name="vehicleType" [(ngModel)]="ewayform.vehicleType" formControlName="vehicleType" value="O">Over Dimensional Cargo
             </label>
         </div>
 </section>
  <section class="last-section"> 
-    <form class="form-inline">
+    <div class="form-inline">
         <div class="form-group">
           <label for="email">Vehicle No:</label>
-          <input style="margin-left: 28px;" type="text" class="form-control" id="email">
+          <input style="margin-left: 28px;" type="text" class="form-control" id="email" [(ngModel)]="ewayform.vehicleNo" formControlName="vehicleNo">
         </div>
-      </form>
+    </div>
       <div class="form2">
-         <form class="form-inline" id="work">
+         <div class="form-inline" id="work">
         <div class="form-group">
           <label for=" ">Transporter Doc No& Date:</label>
-          <input type="text"  style="width: 100px;" class="form-control" id="email">
-          <input type="text" style="width: 100px; margin-left: 10px;" class="form-control" id="email">
+          <input type="text"  style="width: 100px;" class="form-control" id="email" [(ngModel)]="ewayform.transDocNo" formControlName="transDocNo" >
+          <input type="text" style="width: 100px; margin-left: 10px;" class="form-control" id="email" [(ngModel)]="ewayform.transDocDate" formControlName="transDocDate">
         </div>
-      </form>
+    </div>
     </div>
 
     </section>
     <div class="last-section2">
         <button type="button" class="btn btn-primary">Preview</button>
-        <button type="button " type="submit" class="btn btn-primary blue">Submit</button>
+        <button type="submit" class="btn btn-primary blue" [disabled]="!EwayForm.valid">Submit</button>
         <button type="button " class="btn btn-danger blue">Exit</button>
     </div> 
 </section>  
 </form>
+
+<pre>{{ewayform | json}}</pre>
