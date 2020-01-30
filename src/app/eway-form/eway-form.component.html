@@ -13,7 +13,7 @@
     </div>
 </section>
 <!-- end -->
-<form [formGroup]="EwayForm"(validSubmit)="submit()">
+<form [formGroup]="EwayForm" (ngSubmit)="submit()">
 
 <section class="part2">
     <ul class="form-inline partision"><span class="type">Supply Type</span>
@@ -21,10 +21,10 @@
         <li>
             <input class="rdo" type="radio" formControlName="supplyType"  name="supplyType" [(ngModel)]="ewayform.supplyType" value="O"> Outward
         </li>
-                <li>
+             <li>
                     <input type="radio" formControlName="supplyType"  name="supplyType" [(ngModel)]="ewayform.supplyType" value="I">Inward
                     <br>
-                </li><span class="sub">Sub Type</span>
+            </li><span class="sub">Sub Type</span>
                 <li>
                     <input type="radio"  formControlName="subSupplyType"  name="subSupplyType"  [(ngModel)]="ewayform.subSupplyType" value="1"> Supply
                     <br> </li>
@@ -360,7 +360,7 @@
     </section>
     <div class="last-section2">
         <button type="button" class="btn btn-primary">Preview</button>
-        <button type="submit" class="btn btn-primary blue" [disabled]="!EwayForm.valid">Submit</button>
+        <button type="submit" class="btn btn-primary blue">Submit</button>
         <button type="button " class="btn btn-danger blue">Exit</button>
     </div> 
 </section>  
